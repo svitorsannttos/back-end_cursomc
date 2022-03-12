@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-public class Estado implements Serializable{
+public class Estado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,13 +23,18 @@ public class Estado implements Serializable{
 	private Integer id;
 	private String name;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "estado")
 	private List<Cidade> cidades = new ArrayList<>();
 
-	public Estado(Integer id, String name) {
+	public Estado(String name) {
 		super();
-		this.id = id;
 		this.name = name;
+	}
+
+	public Estado() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -71,5 +78,4 @@ public class Estado implements Serializable{
 		return Objects.equals(id, other.id);
 	}
 
-	
 }
