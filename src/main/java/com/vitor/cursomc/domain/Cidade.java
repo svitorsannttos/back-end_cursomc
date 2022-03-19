@@ -25,16 +25,18 @@ public class Cidade implements Serializable{
 	private Estado estado;
 
 	
+	public Cidade(Integer id, String name, Estado estado) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.estado = estado;
+	}
+
 	public Cidade() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cidade( String name, Estado  estado) {
-		super();
-		this.name = name;
-		this.estado = estado;
-	}
 
 	public Integer getId() {
 		return id;
