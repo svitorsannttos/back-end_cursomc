@@ -7,6 +7,9 @@ import javax.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.vitor.cursomc.services.validation.ClienteInsert;
+
+@ClienteInsert
 @SuppressWarnings("deprecation")
 public class NewClienteDTO implements Serializable {
 
@@ -18,8 +21,6 @@ public class NewClienteDTO implements Serializable {
 	
 	@NotEmpty(message="Preenchimento obrigatorio")
 	@Email(message = "E-mail inválido")
-	
-	@NotEmpty(message="Preenchimento obrigatorio")
 	private String email;
 	
 	@NotEmpty(message="Preenchimento obrigatorio")

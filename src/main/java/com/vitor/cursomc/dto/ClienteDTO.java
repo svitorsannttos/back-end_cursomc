@@ -8,7 +8,9 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.vitor.cursomc.domain.Cliente;
+import com.vitor.cursomc.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 @SuppressWarnings("deprecation")
 public class ClienteDTO implements Serializable {
 
