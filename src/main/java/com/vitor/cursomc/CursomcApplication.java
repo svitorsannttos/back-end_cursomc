@@ -138,8 +138,8 @@ public class CursomcApplication implements CommandLineRunner {
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
 		
 		ItemPedido ip1 = new ItemPedido(ped2, p3, 10.00, 1, p3.getPreco());
-		ItemPedido ip2 = new ItemPedido(ped1, p2, 0.00, 2, p2.getPreco()*2);
-		ItemPedido ip3 = new ItemPedido(ped2, p1, 50.00, 3, p1.getPreco()*3);
+		ItemPedido ip2 = new ItemPedido(ped1, p2, 0.00, 2, p2.getPreco());
+		ItemPedido ip3 = new ItemPedido(ped2, p1, 50.00, 3, p1.getPreco());
 		
 		ped2.getItens().addAll(Arrays.asList(ip1,ip3));
 		ped1.getItens().addAll(Arrays.asList(ip2));
