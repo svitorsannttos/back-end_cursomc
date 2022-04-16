@@ -1,8 +1,10 @@
 package com.vitor.cursomc.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -131,5 +133,28 @@ public class Pedido implements Serializable{
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
 	}
+
+	@Override
+	public String toString() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pedido [id=");
+		builder.append(id);
+		builder.append(", instance=");
+		builder.append(instance);
+		builder.append(", pagamento=");
+		builder.append(pagamento);
+		builder.append(", cliente=");
+		builder.append(cliente);
+		builder.append(", enderecoDeEntrega=");
+		builder.append(enderecoDeEntrega);
+		builder.append(", itens=");
+		builder.append(itens);
+		builder.append("Valor total: ");
+		builder.append(nf.format(getValorTotal()));
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 }
