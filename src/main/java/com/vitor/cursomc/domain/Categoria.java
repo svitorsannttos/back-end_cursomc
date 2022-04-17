@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Categoria implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(value = "Código da Categoria")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

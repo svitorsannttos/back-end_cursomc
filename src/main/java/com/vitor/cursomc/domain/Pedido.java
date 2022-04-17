@@ -2,6 +2,7 @@ package com.vitor.cursomc.domain;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
@@ -29,7 +30,7 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-	private Date instance;
+	private Date instante;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
 	private Pagamento pagamento;
@@ -49,10 +50,10 @@ public class Pedido implements Serializable{
 		super();
 	}
 
-	public Pedido(Integer id, Date instance, Cliente cliente, Endereco enderecoDeEntrega) {
+	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
 		super();
 		this.id = id;
-		this.instance = instance;
+		this.instante = instante;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
@@ -73,12 +74,12 @@ public class Pedido implements Serializable{
 		this.id = id;
 	}
 
-	public Date getInstance() {
-		return instance;
+	public Date getInstante() {
+		return instante;
 	}
 
-	public void setInstance(Date instance) {
-		this.instance = instance;
+	public void setInstante(Date instante) {
+		this.instante = instante;
 	}
 
 	public Pagamento getPagamento() {
@@ -137,22 +138,22 @@ public class Pedido implements Serializable{
 	@Override
 	public String toString() {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		StringBuilder builder = new StringBuilder();
-		builder.append("Pedido [id=");
-		builder.append(id);
-		builder.append(", instance=");
-		builder.append(instance);
-		builder.append(", pagamento=");
-		builder.append(pagamento);
-		builder.append(", cliente=");
-		builder.append(cliente);
-		builder.append(", enderecoDeEntrega=");
-		builder.append(enderecoDeEntrega);
-		builder.append(", itens=");
-		builder.append(itens);
+		builder.append("Pedido número: ");
+		builder.append(getId());
+		builder.append(", Instante: ");
+		builder.append(sdf.format(getInstante()));
+		builder.append(", Cliente: ");
+		builder.append(getCliente().getNome());
+		builder.append(", Situação do pagamento: ");
+		builder.append(getPagamento().getEstado().getDescricao());
+		builder.append("\nDetalhes:\n");
+		for (ItemPedido ip : getItens()) {
+			builder.append(ip.toString());
+		}
 		builder.append("Valor total: ");
 		builder.append(nf.format(getValorTotal()));
-		builder.append("]");
 		return builder.toString();
 	}
 	

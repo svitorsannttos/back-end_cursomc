@@ -21,8 +21,14 @@ import com.vitor.cursomc.domain.Categoria;
 import com.vitor.cursomc.dto.CategoriaDTO;
 import com.vitor.cursomc.services.CategoriaService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(value = "/categorias")
+@Api(value="API REST Categorias")
 public class CategoriaResource {
 
 	@Autowired
@@ -58,6 +64,14 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@ApiOperation(value = "Retorna uma lista de Categorias")
+	@ApiResponses(value = {
+		    @ApiResponse(code = 200, message = "Retorna a lista de Categorias."),
+		    @ApiResponse(code = 401, message = "Precisa está autenticado para obter a resposta solicitada."),
+		    @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso."),
+		    @ApiResponse(code = 500, message = "Foi gerada uma exceção."),
+		    @ApiResponse(code = 404, message = "O servidor não pode encontrar o recurso solicitado."),
+		})
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll(){
 		
