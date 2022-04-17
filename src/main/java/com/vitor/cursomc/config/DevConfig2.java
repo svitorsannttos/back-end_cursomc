@@ -37,4 +37,5 @@ public class DevConfig2 {
 	public EmailService emailService() {
 		return new SmtpEmailService();
 	}
+	
 }
