@@ -39,6 +39,7 @@ public class Cliente implements Serializable{
 	private String senha;
 	
 	private String cpfOuCnpj;
+	private String imageUrl;
 	private Integer tipo;
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -56,6 +57,7 @@ public class Cliente implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
+	
 
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
@@ -167,6 +169,14 @@ public class Cliente implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	
