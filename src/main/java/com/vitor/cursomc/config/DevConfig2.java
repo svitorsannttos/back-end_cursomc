@@ -29,7 +29,7 @@ public class DevConfig2 {
 			return false;
 		}
 		
-		databasetest.InstantiateTestDatabase();
+		databasetest.instantiateTestDatabase();
 		return true;
 	}
 	
